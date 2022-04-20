@@ -48,7 +48,8 @@ echo "re-building DB"
 rpm -rebuilddb
 
 wget -P /tmp https://github.com/venkatnaveen-kyndryl/update-fix/raw/main/ibm-router-agent-8.4-5.el8.noarch.rpm
-rpm -ivh --replacefiles --replacepkgs /tmp/ibm-router-agent-8.4-5.el8.noarch.rpm
+wget -P /tmp https://github.com/venkatnaveen-kyndryl/update-fix/raw/main/ibm-router-agent-8.4-5.el8.noarch.rpm
+rpm -ivh --replacefiles --replacepkgs /tmp/ibm-router-agent-8.4-5.el8.noarch.rpm ibm-router-agent-8.4-5.el8.noarch.rpm
 
 # running updates
 dnf update -y
