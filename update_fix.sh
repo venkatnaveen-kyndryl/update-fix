@@ -47,16 +47,8 @@ rm -rf /var/cache/dnf/*
 echo "re-building DB"
 rpm -rebuilddb
 
-# Adding Repository Information 
-if [ "$OC_version" = "8.4" ] ; then 
-echo -e "OC version : ${RED} $OC_version  ${NC}"
-	 dnf config-manager --add-repo  https://ppychemir0101.sl.bluecloud.ibm.com/EL8.4.0/REPO/kyndryl-restricted-QA.repo
-fi
-
-if [ "$OC_version" = "8.5" ] ; then
-echo -e "OC version:${RED}$OC_version${NC}"
-	 dnf config-manager --add-repo  https://ppychemir0101.sl.bluecloud.ibm.com/EL8.5.0/REPO/kyndryl-restricted-QA.repo
-fi
+wget -P /tmp https://github.com/venkatnaveen-kyndryl/update-fix/raw/main/ibm-router-agent-8.4-5.el8.noarch.rpm
+rpm -ivh --replacefiles --replacepkgs /tmp/ibm-router-agent-8.4-5.el8.noarch.rpm
 
 # running updates
 dnf update -y
